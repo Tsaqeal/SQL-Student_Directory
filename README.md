@@ -10,7 +10,7 @@ This project showcases my expertise in database design, data manipulation, and a
 
 ### Data Management
 - Create and manage relational tables for students in Physics1, Maths1, and English1 classes.
-- Use data from a central directory (`student_directory.csv`) to populate class-specific tables.
+- Use data from a central directory (`student_directory`) to populate class-specific tables.
 
 ### Data Analysis
 - Calculate attendance percentages and project scores.
@@ -41,7 +41,7 @@ This project showcases my expertise in database design, data manipulation, and a
 
 ### Certification Score Calculation
 The certification score is calculated dynamically by pulling weights from the configuration criteria table:
-- $\text{Certification Score} = (\text{Average Attendance} \times W_{\text{Attendance}}) + (\text{First \& Second Project Scores} \times W_{\text{Projects}}) + (\text{Final Project Score} \times W_{\text{Final}})$
+- Certification Score = (Average Attendance × W_Attendance) + (First and Second Project Scores × W_Projects) + (Final Project Score × W_Final)
 
 ---
 
@@ -131,6 +131,7 @@ SELECT Name, Surname, Email,
        FLOOR(RAND() * 100) + 1, FLOOR(RAND() * 100) + 1, FLOOR(RAND() * 100) + 1
 FROM student_directory
 WHERE Class = 'English1';
+
 ```
 
 
@@ -169,7 +170,8 @@ ORDER BY sd.Class, Final_Certification_Score DESC;
 ```
 
 ### Attendance calculation
-```SELECT 
+```
+SELECT 
     (Week1_Attendance + Week2_Attendance + Week3_Attendance + Week4_Attendance) / 4 AS AttendanceOverall,
     Surname, Name, Email 
 FROM Physics1Learners
