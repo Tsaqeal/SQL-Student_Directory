@@ -10,7 +10,7 @@ This project showcases my expertise in database design, data manipulation, and a
 
 ### Data Management
 - Create and manage relational tables for students in Physics1, Maths1, and English1 classes.
-- Use data from a central directory (`student_directory`) to populate class-specific tables.
+- Use data from a central directory (`student_directory`) populated via `student_directory.csv` to populate class-specific tables.
 
 ### Data Analysis
 - Calculate attendance percentages and project scores.
@@ -24,6 +24,13 @@ This project showcases my expertise in database design, data manipulation, and a
 - **Data Analysis:** Use of calculated fields and configuration tables to derive insights such as certification scores.
 - **Relational Database Design:** Joining multiple tables and organizing data effectively.
 - **Problem-Solving Skills:** Translating business logic (e.g., dynamic certification scoring) into efficient SQL queries.
+
+---
+
+## Repository Structure
+* **`student_directory.csv`**: Raw master dataset containing student records.
+* **`Student Directory.sql`**: Complete SQL script to set up tables, populate data, and run analytical queries.
+* **`README.md`**: Project documentation and execution instructions.
 
 ---
 
@@ -45,6 +52,21 @@ The certification score is calculated dynamically by pulling weights from the co
 
 ---
 
+## How to Run This Project
+
+### Prerequisites
+- A MySQL-compatible database (e.g., MySQL Workbench).
+- The `student_directory` master table imported from `student_directory.csv`.
+
+### Steps to Run
+
+1. **Clone the Repository:**
+
+git clone [https://github.com/Tsaqeal/SQL-Student_Directory.git](https://github.com/Tsaqeal/SQL-Student_Directory.git)
+```
+cd SQL-Student_Directory
+```
+1
 ## Project Script
 
 ```sql
