@@ -10,7 +10,7 @@ This project showcases my expertise in database design, data manipulation, and a
 
 ### Data Management
 - Create and manage relational tables for students in Physics1, Maths1, and English1 classes.
-- Use data from a central directory (`student_directory`) to populate class-specific tables.
+- Use data from a central directory (`student_directory.csv`) to populate class-specific tables.
 
 ### Data Analysis
 - Calculate attendance percentages and project scores.
