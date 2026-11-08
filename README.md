@@ -41,8 +41,7 @@ This project showcases my expertise in database design, data manipulation, and a
 
 ### Certification Score Calculation
 The certification score is calculated dynamically by pulling weights from the configuration criteria table:
-- $\text{Certification Score} = (\text{Average Attendance} \times W_{\text{Attendance}}) + (\text{First \& Second Project Scores} \times W_{\text{Projects}}) + (\text{Final Project Score} \times W_{\text{Final}})$
-
+- Certification Score = (Average Attendance × W_Attendance) + (First and Second Project Scores × W_Projects) + (Final Project Score × W_Final)
 ---
 
 ## Project Script
@@ -131,3 +130,51 @@ SELECT Name, Surname, Email,
        FLOOR(RAND() * 100) + 1, FLOOR(RAND() * 100) + 1, FLOOR(RAND() * 100) + 1
 FROM student_directory
 WHERE Class = 'English1';
+```
+
+
+
+### Example Queries
+
+#### Joining and Analyzing Data via Criteria Config
+```sql
+SELECT 
+    sd.Name,
+    sd.Surname,
+    sd.Email,
+    sd.Class,
+    ROUND(
+        CASE 
+            WHEN sd.Class = 'Physics1' THEN 
+                ((p.Week1_Attendance + p.Week2_Attendance + p.Week3_Attendance + p.Week4_Attendance) / 4) * (SELECT Weight FROM Criteria WHERE Criterion_Name = 'Attendance_Weight')
+                + (p.First_Project_Score * (SELECT Weight FROM Criteria WHERE Criterion_Name = 'First_Project_Weight'))
+                + (p.Second_Project_Score * (SELECT Weight FROM Criteria WHERE Criterion_Name = 'Second_Project_Weight'))
+                + (p.Final_Project_Score * (SELECT Weight FROM Criteria WHERE Criterion_Name = 'Final_Project_Weight'))
+            WHEN sd.Class = 'Maths1' THEN 
+                ((m.Week1_Attendance + m.Week2_Attendance + m.Week3_Attendance + m.Week4_Attendance) / 4) * (SELECT Weight FROM Criteria WHERE Criterion_Name = 'Attendance_Weight')
+                + (m.First_Project_Score * (SELECT Weight FROM Criteria WHERE Criterion_Name = 'First_Project_Weight'))
+                + (m.Second_Project_Score * (SELECT Weight FROM Criteria WHERE Criterion_Name = 'Second_Project_Weight'))
+                + (m.Final_Project_Score * (SELECT Weight FROM Criteria WHERE Criterion_Name = 'Final_Project_Weight'))
+            WHEN sd.Class = 'English1' THEN 
+                ((e.Week1_Attendance + e.Week2_Attendance + e.Week3_Attendance + e.Week4_Attendance) / 4) * (SELECT Weight FROM Criteria WHERE Criterion_Name = 'Attendance_Weight')
+                + (e.First_Project_Score * (SELECT Weight FROM Criteria WHERE Criterion_Name = 'First_Project_Weight'))
+                + (e.Second_Project_Score * (SELECT Weight FROM Criteria WHERE Criterion_Name = 'Second_Project_Weight'))
+                + (e.Final_Project_Score * (SELECT Weight FROM Criteria WHERE Criterion_Name = 'Final_Project_Weight'))
+            ELSE 0
+        END, 2) AS Final_Certification_Score
+FROM student_directory sd
+LEFT JOIN Physics1Learners p ON sd.Email = p.Email
+LEFT JOIN Maths1Learners m ON sd.Email = m.Email
+LEFT JOIN English1Learners e ON sd.Email = e.Email
+ORDER BY sd.Class, Final_Certification_Score DESC;
+```
+
+### Attendance Calculation
+```
+SELECT 
+    (Week1_Attendance + Week2_Attendance + Week3_Attendance + Week4_Attendance) / 4 AS AttendanceOverall,
+    Surname, Name, Email 
+FROM Physics1Learners
+ORDER BY AttendanceOverall DESC;
+```
+
