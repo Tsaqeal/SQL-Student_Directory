@@ -65,6 +65,9 @@ The certification score is calculated dynamically by pulling weights from the co
    git clone [https://github.com/Tsaqeal/SQL-Student_Directory.git](https://github.com/Tsaqeal/SQL-Student_Directory.git)
    cd SQL-Student_Directory
 ```
+```
+
+
 ## Project Script
 
 ```sql
