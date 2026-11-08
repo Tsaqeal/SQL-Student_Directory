@@ -61,12 +61,10 @@ The certification score is calculated dynamically by pulling weights from the co
 ### Steps to Run
 
 1. **Clone the Repository:**
-
-git clone [https://github.com/Tsaqeal/SQL-Student_Directory.git](https://github.com/Tsaqeal/SQL-Student_Directory.git)
+   ```bash
+   git clone [https://github.com/Tsaqeal/SQL-Student_Directory.git](https://github.com/Tsaqeal/SQL-Student_Directory.git)
+   cd SQL-Student_Directory
 ```
-cd SQL-Student_Directory
-```
-1
 ## Project Script
 
 ```sql
