@@ -192,7 +192,7 @@ SELECT
                 COALESCE(p.Week2_Attendance, m.Week2_Attendance, e.Week2_Attendance, c.Week2_Attendance, 0) + 
                 COALESCE(p.Week3_Attendance, m.Week3_Attendance, e.Week3_Attendance, c.Week3_Attendance, 0) + 
                 COALESCE(p.Week4_Attendance, m.Week4_Attendance, e.Week4_Attendance, c.Week4_Attendance, 0)
-            ) / 4
+            ) / 4.0
         ) * (SELECT Weight FROM Criteria WHERE Criterion_Name = 'Attendance_Weight')
         
         + COALESCE(p.First_Project_Score, m.First_Project_Score, e.First_Project_Score, c.First_Project_Score, 0) 
@@ -212,7 +212,7 @@ SELECT
                     COALESCE(p.Week2_Attendance, m.Week2_Attendance, e.Week2_Attendance, c.Week2_Attendance, 0) + 
                     COALESCE(p.Week3_Attendance, m.Week3_Attendance, e.Week3_Attendance, c.Week3_Attendance, 0) + 
                     COALESCE(p.Week4_Attendance, m.Week4_Attendance, e.Week4_Attendance, c.Week4_Attendance, 0)
-                ) / 4
+                ) / 4.0
             ) * (SELECT Weight FROM Criteria WHERE Criterion_Name = 'Attendance_Weight')
             + COALESCE(p.First_Project_Score, m.First_Project_Score, e.First_Project_Score, c.First_Project_Score, 0) * (SELECT Weight FROM Criteria WHERE Criterion_Name = 'First_Project_Weight')
             + COALESCE(p.Second_Project_Score, m.Second_Project_Score, e.Second_Project_Score, c.Second_Project_Score, 0) * (SELECT Weight FROM Criteria WHERE Criterion_Name = 'Second_Project_Weight')
@@ -225,7 +225,7 @@ SELECT
                     COALESCE(p.Week2_Attendance, m.Week2_Attendance, e.Week2_Attendance, c.Week2_Attendance, 0) + 
                     COALESCE(p.Week3_Attendance, m.Week3_Attendance, e.Week3_Attendance, c.Week3_Attendance, 0) + 
                     COALESCE(p.Week4_Attendance, m.Week4_Attendance, e.Week4_Attendance, c.Week4_Attendance, 0)
-                ) / 4
+                ) / 4.0
             ) * (SELECT Weight FROM Criteria WHERE Criterion_Name = 'Attendance_Weight')
             + COALESCE(p.First_Project_Score, m.First_Project_Score, e.First_Project_Score, c.First_Project_Score, 0) * (SELECT Weight FROM Criteria WHERE Criterion_Name = 'First_Project_Weight')
             + COALESCE(p.Second_Project_Score, m.Second_Project_Score, e.Second_Project_Score, c.Second_Project_Score, 0) * (SELECT Weight FROM Criteria WHERE Criterion_Name = 'Second_Project_Weight')
